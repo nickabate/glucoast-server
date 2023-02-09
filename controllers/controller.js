@@ -3,7 +3,7 @@ const fs = require("node:fs");
 
 // Convenience function
 const getInfo = () => {
-  const jsonData = fs.readFileSync("./data/userinfo.json");
+  const jsonData = fs.readFileSync("./data/userinfo1.json");
   return JSON.parse(jsonData);
 };
 
