@@ -16,7 +16,7 @@ exports.index = (_req, res) => {
 // Get date by ID
 exports.dateById = (req, res) => {
   const userData = getInfo();
-  const dateById = userData.find((date) => date.id === +req.params.id);
+  const dateById = userData.find((date) => date.id === req.params.id);
   res.status(200).json(dateById);
 };
 
@@ -38,10 +38,27 @@ exports.editById = (req, res) => {
     insulin1: req.body.insulin1,
     insulin2: req.body.insulin2,
     insulin3: req.body.insulin3,
+    preglucose1: req.body.preglucose1,
+    preglucose2: req.body.preglucose2,
+    preglucose3: req.body.preglucose3,
+    postglucose1: req.body.postglucose1,
+    postglucose2: req.body.postglucose2,
+    postglucose3: req.body.postglucose3,
     sleep: req.body.sleep,
     exercise: req.body.exercise,
   };
   userData.splice(editItem, 1, newItem);
   fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
   res.status(200).send("Item updated!");
+};
+
+// Delete date by ID
+exports.deleteById = (req, res) => {
+  const userData = getInfo();
+  const deleteItem = userData.findIndex((item) => {
+    return item.id === req.params.id;
+  });
+  userData.splice(deleteItem, 1);
+  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
+  res.status(200).send("Deleted item!");
 };
