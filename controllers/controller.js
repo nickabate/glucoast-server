@@ -52,6 +52,36 @@ exports.editById = (req, res) => {
   res.status(200).send("Item updated!");
 };
 
+// Post new date
+exports.newDate = (req, res) => {
+  const userData = getInfo();
+  const newDate = {
+    id: uuidv4(),
+    userid: req.body.userid,
+    week: req.body.week,
+    weekday: req.body.weekday,
+    day: req.body.day,
+    meal1: req.body.meal1,
+    meal2: req.body.meal2,
+    meal3: req.body.meal3,
+    insulin1: req.body.insulin1,
+    insulin2: req.body.insulin2,
+    insulin3: req.body.insulin3,
+    preglucose1: req.body.preglucose1,
+    preglucose2: req.body.preglucose2,
+    preglucose3: req.body.preglucose3,
+    postglucose1: req.body.postglucose1,
+    postglucose2: req.body.postglucose2,
+    postglucose3: req.body.postglucose3,
+    sleep: req.body.sleep,
+    exercise: req.body.exercise,
+  };
+
+  userData.push(newDate);
+  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
+  res.status(200).send("New date added!");
+};
+
 // Delete date by ID
 exports.deleteById = (req, res) => {
   const userData = getInfo();
