@@ -1,13 +1,13 @@
 const { v4: uuidv4 } = require("uuid");
 const fs = require("node:fs");
 
-// Convenience function
+// Convenience function to get all data stored
 const getInfo = () => {
   const jsonData = fs.readFileSync("./data/userinfo1.json");
   return JSON.parse(jsonData);
 };
 
-// Get all JSON info
+// Get all dates info
 exports.index = (_req, res) => {
   const userData = getInfo();
   res.status(200).json(userData);
@@ -17,6 +17,13 @@ exports.index = (_req, res) => {
 exports.dateById = (req, res) => {
   const userData = getInfo();
   const dateById = userData.find((date) => date.id === req.params.id);
+
+  if (!dateById) {
+    return res
+      .status(400)
+      .json({ error: true, message: "No date ID provided." });
+  }
+
   res.status(200).json(dateById);
 };
 
@@ -48,8 +55,15 @@ exports.editById = (req, res) => {
     exercise: req.body.exercise,
   };
   userData.splice(editItem, 1, newItem);
-  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
-  res.status(200).send("Item updated!");
+  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData), (err) => {
+    if (err) {
+      return res.status(500).json({
+        error: true,
+        message: "There was an error editing the date, please try again.",
+      });
+    }
+  });
+  res.status(204).send("Item updated!");
 };
 
 // Post new date
@@ -78,8 +92,15 @@ exports.newDate = (req, res) => {
   };
 
   userData.push(newDate);
-  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
-  res.status(200).send("New date added!");
+  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData), (err) => {
+    if (err) {
+      return res.status(500).json({
+        error: true,
+        message: "There was an error adding the date, please try again.",
+      });
+    }
+  });
+  res.status(201).send("New date added!");
 };
 
 // Delete date by ID
@@ -89,6 +110,13 @@ exports.deleteById = (req, res) => {
     return item.id === req.params.id;
   });
   userData.splice(deleteItem, 1);
-  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData));
-  res.status(200).send("Deleted item!");
+  fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData), (err) => {
+    if (err) {
+      return res.status(500).json({
+        error: true,
+        message: "There was an error deleting the date, please try again.",
+      });
+    }
+  });
+  res.status(204).send("Deleted item!");
 };
