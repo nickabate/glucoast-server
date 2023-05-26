@@ -1,3 +1,5 @@
+### [🔗 Click here to see this project deployed live!](https://nick-abate-glucoast.netlify.app/)
+
 # GLUCOAST
 
 **_GLUCOAST is an all-in-one dashboard to assist diabetics in managing their glucose levels throughout the day._**
@@ -11,6 +13,8 @@ This is a React application. The front-end is fully responsive from mobile to de
 Thanks for checking out my work! Feel free to reach out to me with any questions or to connect.
 
 \- Nick Abate
+
+![Demo screenshot](./demo/screenshot.png)
 
 ## Installation
 
