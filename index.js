@@ -10,6 +10,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
+app.get("/", (_req, res) => {
+  res.send("Welcome to the GLUCOAST API");
+});
+
 app.use("/api", userData);
 
 app.listen(port, () => {

@@ -21,7 +21,7 @@ exports.dateById = (req, res) => {
   if (!dateById) {
     return res
       .status(400)
-      .json({ error: true, message: "No date ID provided." });
+      .json({ error: true, message: "No valid date ID provided." });
   }
 
   res.status(200).json(dateById);
@@ -33,26 +33,55 @@ exports.editById = (req, res) => {
   const editItem = userData.findIndex((item) => {
     return item.id === req.body.id;
   });
+
+  if (!editItem) {
+    return res
+      .status(400)
+      .json({ error: true, message: "No valid date ID provided." });
+  }
+
+  const {
+    id,
+    userid,
+    week,
+    weekday,
+    day,
+    meal1,
+    meal2,
+    meal3,
+    insulin1,
+    insulin2,
+    insulin3,
+    preglucose1,
+    preglucose2,
+    preglucose3,
+    postglucose1,
+    postglucose2,
+    postglucose3,
+    sleep,
+    exercise,
+  } = req.body;
+
   const newItem = {
-    id: req.body.id,
-    userid: req.body.userid,
-    week: req.body.week,
-    weekday: req.body.weekday,
-    day: req.body.day,
-    meal1: req.body.meal1,
-    meal2: req.body.meal2,
-    meal3: req.body.meal3,
-    insulin1: req.body.insulin1,
-    insulin2: req.body.insulin2,
-    insulin3: req.body.insulin3,
-    preglucose1: req.body.preglucose1,
-    preglucose2: req.body.preglucose2,
-    preglucose3: req.body.preglucose3,
-    postglucose1: req.body.postglucose1,
-    postglucose2: req.body.postglucose2,
-    postglucose3: req.body.postglucose3,
-    sleep: req.body.sleep,
-    exercise: req.body.exercise,
+    id,
+    userid,
+    week,
+    weekday,
+    day,
+    meal1,
+    meal2,
+    meal3,
+    insulin1,
+    insulin2,
+    insulin3,
+    preglucose1,
+    preglucose2,
+    preglucose3,
+    postglucose1,
+    postglucose2,
+    postglucose3,
+    sleep,
+    exercise,
   };
   userData.splice(editItem, 1, newItem);
   fs.writeFileSync("./data/userinfo1.json", JSON.stringify(userData), (err) => {
@@ -63,32 +92,54 @@ exports.editById = (req, res) => {
       });
     }
   });
-  res.status(204).send("Item updated!");
+  res.status(200).send("Item updated!");
 };
 
 // Post new date
 exports.newDate = (req, res) => {
   const userData = getInfo();
+
+  const {
+    userid,
+    week,
+    weekday,
+    day,
+    meal1,
+    meal2,
+    meal3,
+    insulin1,
+    insulin2,
+    insulin3,
+    preglucose1,
+    preglucose2,
+    preglucose3,
+    postglucose1,
+    postglucose2,
+    postglucose3,
+    sleep,
+    exercise,
+  } = req.body;
+
   const newDate = {
     id: uuidv4(),
-    userid: req.body.userid,
-    week: req.body.week,
-    weekday: req.body.weekday,
-    day: req.body.day,
-    meal1: req.body.meal1,
-    meal2: req.body.meal2,
-    meal3: req.body.meal3,
-    insulin1: req.body.insulin1,
-    insulin2: req.body.insulin2,
-    insulin3: req.body.insulin3,
-    preglucose1: req.body.preglucose1,
-    preglucose2: req.body.preglucose2,
-    preglucose3: req.body.preglucose3,
-    postglucose1: req.body.postglucose1,
-    postglucose2: req.body.postglucose2,
-    postglucose3: req.body.postglucose3,
-    sleep: req.body.sleep,
-    exercise: req.body.exercise,
+    userid,
+    week,
+    weekday,
+    day,
+    meal1,
+    meal2,
+    meal3,
+    insulin1,
+    insulin2,
+    insulin3,
+    preglucose1,
+    preglucose2,
+    preglucose3,
+    postglucose1,
+    postglucose2,
+    postglucose3,
+    sleep,
+    exercise,
   };
 
   userData.push(newDate);
@@ -118,5 +169,5 @@ exports.deleteById = (req, res) => {
       });
     }
   });
-  res.status(204).send("Deleted item!");
+  res.status(200).send("Deleted item!");
 };
