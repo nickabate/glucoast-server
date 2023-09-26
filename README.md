@@ -1,4 +1,4 @@
-### [🔗 Click here to see this project deployed live!](https://nick-abate-glucoast.netlify.app/)
+<!-- [🔗 Click here to see this project deployed live!](https://nick-abate-glucoast.netlify.app/) -->
 
 # GLUCOAST
 
