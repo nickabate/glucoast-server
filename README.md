@@ -13,7 +13,7 @@ This is a brief regarding one of my capstone projects completed during my Softwa
 
 We help users to track their blood sugar (glucose) levels throughout the day, by keeping a log of different variables and how they affected their blood sugar levels. GLUCOAST’s goal is to help you coast throughout the day by making informed decisions on how to manage your glucose levels without unintentionally causing glucose levels to rise or crash during your day, which is a diabetic’s biggest daily challenge.
 
-## Built with
+## Built With
 
 The front-end is built with React, is fully responsive from mobile to desktop viewports with dynamic data visualization, and the back-end runs Express on top of NodeJS supporting database CRUD operations. Sample data has been prepopulated within the datebase for one user with the ability to add, edit and delete data. Creating this project was a great utilization of the skills I learned in my bootcamp experience and showcased my skills to develop a fully functioning full-stack application. 
 
