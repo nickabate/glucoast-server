@@ -1,4 +1,5 @@
-/node_modules
 .env
-userinfo1-copy.json
-userinfo1-copy2.json
+
+node_modules/
+dist/
+generated/
