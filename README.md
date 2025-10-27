@@ -1,6 +1,5 @@
-<!-- [🔗 Click here to see this project deployed live!](https://nick-abate-glucoast.netlify.app/) -->
-
 # GLUCOAST
+![test status](https://github.com/nickabate/glucoast-server/actions/workflows/ci.yml/badge.svg)
 
 GLUCOAST is an all-in-one dashboard to assist diabetics in managing their glucose levels throughout the day. This app helps users to track their blood sugar (glucose) levels throughout the day, by keeping a log of different variables and how they affected their blood sugar levels. 
 
@@ -17,7 +16,7 @@ I created Glucoast as one of my capstone projects completed during my Software E
 
 ## Built With
 
-The front-end is built with [React](https://reactjs.org/), is fully responsive from mobile to desktop viewports with [dynamic data visualization](https://recharts.org/en-US/), and the back-end runs [Express](https://expressjs.com/) on top of NodeJS supporting database CRUD operations. 
+The front-end is built with [React](https://reactjs.org/) and is fully responsive from mobile to desktop viewports with [dynamic data visualization](https://recharts.org/en-US/). The back-end runs TypeScript and [Express](https://expressjs.com/) on top of NodeJS supporting database CRUD operations with PostgreSQL and Prisma ORM. 
 
 Sample data has been prepopulated within the datebase for one user with the ability to add, edit and delete data. Creating this project was a great utilization of the skills I learned in my bootcamp experience and showcased my skills to develop a fully functioning full-stack application.
 

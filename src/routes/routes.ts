@@ -1,9 +1,12 @@
-const express = require("express");
+import express from 'express';
+import controller from "../controllers/controller.js";
+
 const router = express.Router();
-const controller = require("../controllers/controller");
 
 // Routes for calling existing dates and posting a new date
-router.route("/").get(controller.index).post(controller.newDate);
+router.route("/")
+  .get(controller.index)
+  .post(controller.newDate);
 
 // Routes for existing date manipulation
 router
@@ -12,4 +15,4 @@ router
   .put(controller.editById)
   .delete(controller.deleteById);
 
-module.exports = router;
+export default router;
